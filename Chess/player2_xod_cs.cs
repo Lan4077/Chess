@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace Chess
 {
-    public class lal
+    class player2_xod_cs
     {
-        partial void lal()
-        {
-
-        }
     }
 }

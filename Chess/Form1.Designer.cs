@@ -48,6 +48,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(640, 640);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // START_BUTTON
             // 
@@ -57,6 +58,7 @@
             this.START_BUTTON.TabIndex = 1;
             this.START_BUTTON.Text = "Начать игру";
             this.START_BUTTON.UseVisualStyleBackColor = true;
+            this.START_BUTTON.Click += new System.EventHandler(this.START_BUTTON_Click);
             // 
             // EXIT_BUTTON
             // 
@@ -66,6 +68,7 @@
             this.EXIT_BUTTON.TabIndex = 2;
             this.EXIT_BUTTON.Text = "АЛТ+Ф4";
             this.EXIT_BUTTON.UseVisualStyleBackColor = true;
+            this.EXIT_BUTTON.Click += new System.EventHandler(this.EXIT_BUTTON_Click);
             // 
             // groupBox1
             // 
