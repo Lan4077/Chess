@@ -15,6 +15,10 @@ namespace Chess
         public Form1()
         {
             InitializeComponent();
+
+        }
+        partial void lal1()
+        {
         }
     }
 }

@@ -144,13 +144,13 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button START_BUTTON;
         private System.Windows.Forms.Button EXIT_BUTTON;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton Random_button;
         private System.Windows.Forms.RadioButton White_button;
         private System.Windows.Forms.RadioButton black_button;
+        public System.Windows.Forms.Button START_BUTTON;
     }
 }
 
