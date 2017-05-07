@@ -14,7 +14,7 @@ namespace Chess
     {
         public Form1()
         {
-            InitializeComponent(); //lal
+            InitializeComponent();
         }
     }
 }
