@@ -33,11 +33,10 @@
             this.START_BUTTON = new System.Windows.Forms.Button();
             this.EXIT_BUTTON = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.black_button = new System.Windows.Forms.RadioButton();
-            this.White_button = new System.Windows.Forms.RadioButton();
             this.Random_button = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
+            this.White_button = new System.Windows.Forms.RadioButton();
+            this.black_button = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -81,25 +80,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Настройки игры";
             // 
-            // label1
+            // Random_button
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Сторона:";
-            // 
-            // black_button
-            // 
-            this.black_button.AutoSize = true;
-            this.black_button.Location = new System.Drawing.Point(6, 32);
-            this.black_button.Name = "black_button";
-            this.black_button.Size = new System.Drawing.Size(65, 17);
-            this.black_button.TabIndex = 1;
-            this.black_button.TabStop = true;
-            this.black_button.Text = "Чёрные";
-            this.black_button.UseVisualStyleBackColor = true;
+            this.Random_button.AutoSize = true;
+            this.Random_button.Location = new System.Drawing.Point(6, 78);
+            this.Random_button.Name = "Random_button";
+            this.Random_button.Size = new System.Drawing.Size(64, 17);
+            this.Random_button.TabIndex = 3;
+            this.Random_button.TabStop = true;
+            this.Random_button.Text = "Рандом";
+            this.Random_button.UseVisualStyleBackColor = true;
             // 
             // White_button
             // 
@@ -112,32 +102,31 @@
             this.White_button.Text = "Белые";
             this.White_button.UseVisualStyleBackColor = true;
             // 
-            // Random_button
+            // black_button
             // 
-            this.Random_button.AutoSize = true;
-            this.Random_button.Location = new System.Drawing.Point(6, 78);
-            this.Random_button.Name = "Random_button";
-            this.Random_button.Size = new System.Drawing.Size(64, 17);
-            this.Random_button.TabIndex = 3;
-            this.Random_button.TabStop = true;
-            this.Random_button.Text = "Рандом";
-            this.Random_button.UseVisualStyleBackColor = true;
+            this.black_button.AutoSize = true;
+            this.black_button.Location = new System.Drawing.Point(6, 32);
+            this.black_button.Name = "black_button";
+            this.black_button.Size = new System.Drawing.Size(65, 17);
+            this.black_button.TabIndex = 1;
+            this.black_button.TabStop = true;
+            this.black_button.Text = "Чёрные";
+            this.black_button.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // label1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(687, 267);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "НИКИТА - 3.14";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Сторона:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(939, 659);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.EXIT_BUTTON);
             this.Controls.Add(this.START_BUTTON);
@@ -149,7 +138,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -163,7 +151,6 @@
         private System.Windows.Forms.RadioButton Random_button;
         private System.Windows.Forms.RadioButton White_button;
         private System.Windows.Forms.RadioButton black_button;
-        private System.Windows.Forms.Label label2;
     }
 }
 
