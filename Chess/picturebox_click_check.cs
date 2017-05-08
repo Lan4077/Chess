@@ -9,10 +9,10 @@ namespace Chess
 {
     class picturebox_click_check
     {
-        public int[] rachet(int[,,,] array, int x = 0, int y = 0)
+        public int[] rachet(int[,,,] doska, int x = 0, int y = 0)
         {
             int[] figura = new int[4];
-            if (x - 32 < 0 || x - 607 > 0 || y - 32 < 0 || y - 607 < 0) //Ща будыт жара из сложных ифоф
+            if (x - 32 < 0 || x - 607 > 0 || y - 32 < 0 || y - 607 > 0) //Ща будыт жара из сложных ифоф
             {
                 //NOTHING AZAZAZA
             }
@@ -83,8 +83,75 @@ namespace Chess
                             }
                         }
                     }
+                } //теперь определяем ряд(ololo)
+                if (y - 248 < 0)
+                {
+                    if (y - 104 < 0)
+                    {
+                        figura[1] = 0;
+                    }
+                    else if (y - 104 == 0)
+                    {
+                        figura[1] = 1;
+                    }
+                    else
+                    {
+                        if (y - 176 >= 0)
+                        {
+                            figura[1] = 2;
+                        }
+                        else
+                        {
+                            figura[1] = 1;
+                        }
+                    }
                 }
-            }
+                else if (y - 248 == 0)
+                {
+                    figura[1] = 3;
+                }
+                else
+                {
+                    if (y - 393 < 0)
+                    {
+                        if (y - 321 < 0)
+                        {
+                            figura[1] = 3;
+                        }
+                        else
+                        {
+                            figura[1] = 4;
+                        }
+                    }
+                    else if (y - 393 == 0)
+                    {
+                        figura[1] = 5;
+                    }
+                    else
+                    {
+                        if (y - 465 < 0)
+                        {
+                            figura[1] = 5;
+                        }
+                        else if (y - 465 == 0)
+                        {
+                            figura[1] = 6;
+                        }
+                        else
+                        {
+                            if (y - 537 >= 0)
+                            {
+                                figura[1] = 7;
+                            }
+                            else
+                            {
+                                figura[1] = 6;
+                            }
+                        }
+                    }
+                }
+                MessageBox.Show(Convert.ToString(figura[0]) + Convert.ToString(figura[1]));
+                }
             return figura;
         }
     }
