@@ -13,7 +13,7 @@ namespace Chess
     public partial class Form1 : Form
     {
         bool player1_xod, game_start = false;
-        int[,,,] doska = new int[8,8,7,2] //Сложный 4-ех мернвй массив(ряд, столбец, фигура(0 - пустая клеточка), сторона(1 - белые))
+        int[,,,] doska = new int[8,8,7,2] //Сложный 4-ех мерный массив(ряд, столбец, фигура(0 - пустая клеточка), сторона(1 - белые))
         public Form1()
         {
             InitializeComponent();
