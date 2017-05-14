@@ -150,8 +150,9 @@ namespace Chess
                         }
                     }
                 }
+                //Дальше определяем фигуру
                 MessageBox.Show(Convert.ToString(figura[0]) + Convert.ToString(figura[1]));
-                }
+            }
             return figura;
         }
     }
