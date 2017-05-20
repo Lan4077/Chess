@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Windows.Forms;
 using System.Threading.Tasks;
 
 namespace Chess
@@ -17,31 +18,14 @@ namespace Chess
                 for(int x = 0; x < 8; x++)
                 {
                     if (doska[x,y,0,0] == 1){} //Делаем ничего
-                    else if(doska[x,y,1,0] == 1)
+                    else if((x+y)%2==0) //Белая клеточка
                     {
-                        e.DrawImage(Image.FromFile("img/black/pawn_w.png"), cletochki[x,y,0]);
-                    }
-                    else if (doska[x, y, 2, 0] == 1)
-                    {
-                        e.DrawImage(Image.FromFile("img/black/knight_w.png"), cletochki[x, y, 0]);
-                    }
-                    else if (doska[x, y, 3, 0] == 1)
-                    {
-                        e.DrawImage(Image.FromFile("img/black/bishop_w.png"), cletochki[x, y, 0]);
-                    }
-                    else if (doska[x, y, 4, 0] == 1)
-                    {
-                        e.DrawImage(Image.FromFile("img/black/rook_w.png"), cletochki[x, y, 0]);
-                    }
-                    else if (doska[x, y, 5, 0] == 1)
-                    {
-                        e.DrawImage(Image.FromFile("img/black/queen_b.png"), cletochki[x, y, 0]);
-                    }
-                    else if (doska[x, y, 6, 0] == 1)
-                    {
-                        e.DrawImage(Image.FromFile("img/black/king_w.png"), cletochki[x, y, 0]);
-                    }
 
+                    }
+                    else
+                    {
+
+                    }
                 }
             }
             return doska_bitmap;
