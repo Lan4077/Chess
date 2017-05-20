@@ -15,6 +15,7 @@ namespace Chess
         public bool player1_xod, game_start = false; //player1 - белые(player2 нет по причине ненадобности)
         public Bitmap doska_bitmap = new Bitmap(640, 640);
         public Image doska_image = Image.FromFile("doska.png");
+        public Point[,,] cletochki = new Point[8, 8, 2];
         public int[,,,] doska = new int[8, 8, 7, 1]; //Сложный 4-ех мерный массив(ряд, столбец, фигура(0 - пустая клеточка, 1 - Пешка, 2 - Конь, 3 - Слон, 4 - Ладья, 5 - Ферзь, - 6 - Король), сторона(1 - белые))
         /// координаты клеточек(сначала идёт x координата всех клеточек, потом для каждого ряда координата y(сначала верхняя потом нижняя)):
         /// [0, a] - (32, 102) [1, a] - (104, 174) [2, a] - (176, 246) [3, a] - (248, 319) [4, a] - (321, 391) [5, a] - (393, 463) [6, a] - (465, 535) [7, a] - (537, 607)
@@ -29,6 +30,8 @@ namespace Chess
         public Form1()
         {
             InitializeComponent();
+            set_point setpoint = new set_point();
+            cletochki = setpoint.setpnt(cletochki);
             stopgame_button.Enabled = false;
             Graphics e = Graphics.FromImage(doska_bitmap);
             e.DrawImage(doska_image, 0, 0);
