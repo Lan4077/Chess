@@ -16,7 +16,7 @@ namespace Chess
         public Bitmap doska_bitmap = new Bitmap(640, 640);
         public Image doska_image = Image.FromFile("doska.png");
         public Point[,,] cletochki = new Point[8, 8, 2];
-        public int[,,,] doska = new int[8, 8, 7, 1]; //Сложный 4-ех мерный массив(ряд, столбец, фигура(0 - пустая клеточка, 1 - Пешка, 2 - Конь, 3 - Слон, 4 - Ладья, 5 - Ферзь, - 6 - Король), сторона(1 - белые))
+        public int[,,,] doska = new int[8, 8, 7, 2]; //Сложный 4-ех мерный массив(ряд, столбец, фигура(0 - пустая клеточка, 1 - Пешка, 2 - Конь, 3 - Слон, 4 - Ладья, 5 - Ферзь, - 6 - Король), сторона(1 - белые))
         /// координаты клеточек(сначала идёт x координата всех клеточек, потом для каждого ряда координата y(сначала верхняя потом нижняя)):
         /// [0, a] - (32, 102) [1, a] - (104, 174) [2, a] - (176, 246) [3, a] - (248, 319) [4, a] - (321, 391) [5, a] - (393, 463) [6, a] - (465, 535) [7, a] - (537, 607)
         /// [b, 0] - (32, 102) 
@@ -42,11 +42,15 @@ namespace Chess
         private void START_BUTTON_Click(object sender, EventArgs e) //Нужно будет механизм старта придумать
         {
             arrangement_of_figures arragement_of_f = new arrangement_of_figures();
+            otrisovka otrsvka = new otrisovka();
             doska = arragement_of_f.arrangement(doska);
+            otrsvka.otrisoBka(doska_bitmap, doska, cletochki);
             game_start = true;
             START_BUTTON.Enabled = false;
             stopgame_button.Enabled = true;
             player1_xod = true;
+            pictureBox1.Image = doska_bitmap;
+            pictureBox1.Refresh();
         }
 
         private void EXIT_BUTTON_Click(object sender, EventArgs e) //Выход(кап. Очевидность)

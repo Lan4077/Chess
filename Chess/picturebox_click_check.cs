@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 
@@ -151,7 +152,7 @@ namespace Chess
                     }
                 }
                 //Дальше определяем фигуру
-                MessageBox.Show(Convert.ToString(figura[0]) + Convert.ToString(figura[1]));
+                MessageBox.Show(Convert.ToString(figura[0]) + " " + Convert.ToString(figura[1]));
             }
             return figura;
         }
