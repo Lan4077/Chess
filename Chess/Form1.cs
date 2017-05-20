@@ -12,9 +12,10 @@ namespace Chess
 {
     public partial class Form1 : Form
     {
-        public bool player1_xod, game_start = false; //player1 - белые(player2 нет по причине ненадобности)
+        public bool player1_xod, game_start, click = false; //player1 - белые(player2 нет по причине ненадобности)
         public Bitmap doska_bitmap = new Bitmap(640, 640);
         public Image doska_image = Image.FromFile("doska.png");
+        public int[,,] xodi = new int[26, 8, 8];
         public Point[,,] cletochki = new Point[8, 8, 2];
         public int[,,,] doska = new int[8, 8, 7, 2]; //Сложный 4-ех мерный массив(ряд, столбец, фигура(0 - пустая клеточка, 1 - Пешка, 2 - Конь, 3 - Слон, 4 - Ладья, 5 - Ферзь, - 6 - Король), сторона(1 - белые))
         /// координаты клеточек(сначала идёт x координата всех клеточек, потом для каждого ряда координата y(сначала верхняя потом нижняя)):
@@ -82,14 +83,34 @@ namespace Chess
             {
                 if (player1_xod == true) //player1_xod_cs юзаем
                 {
-                    picturebox_click_check class_picturebox = new picturebox_click_check();
-                    int x = Convert.ToInt32(e.X);
-                    int y = Convert.ToInt32(e.Y);
-                    int[] figura = class_picturebox.rachet(doska, x, y); //юзая класс определяем клетку нажатия и фигуру
+                    if (click == false)
+                    {
+                        picturebox_click_check class_picturebox = new picturebox_click_check();
+                        int x = Convert.ToInt32(e.X);
+                        int y = Convert.ToInt32(e.Y);
+                        click = true;
+                        int[] figura = class_picturebox.rachet(doska, x, y); //юзая класс определяем клетку нажатия и фигуру
+                        if (figura[2] == 0) { } //nothing
+                        else
+                        {
+                            
+                        }
+                    }
+                    else
+                    {
+
+                    }
                 }
                 else //player2_xod_cs юзаем
                 {
+                    if(click == false)
+                    {
+                        click = true;
+                    }
+                    else
+                    {
 
+                    }
                 }
             }
         }
