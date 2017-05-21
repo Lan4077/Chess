@@ -15,6 +15,7 @@ namespace Chess
         public bool player1_xod, game_start, click = false; //player1 - белые(player2 нет по причине ненадобности)
         public Bitmap doska_bitmap = new Bitmap(640, 640);
         public Image doska_image = Image.FromFile("doska.png");
+        public int[] vibrannaya_figura = new int[4];
         public int[,,] xodi = new int[26, 8, 8];
         public Point[,,] cletochki = new Point[8, 8, 2];
         public int[,,,] doska = new int[8, 8, 7, 2]; //Сложный 4-ех мерный массив(ряд, столбец, фигура(0 - пустая клеточка, 1 - Пешка, 2 - Конь, 3 - Слон, 4 - Ладья, 5 - Ферзь, - 6 - Король), сторона(1 - белые))
@@ -68,6 +69,7 @@ namespace Chess
             stopgame_button.Enabled = false;
             START_BUTTON.Enabled = true;
             xod_partii.Text = "";
+            click = false;
             doska = new int[8, 8, 7, 2];
             Graphics e1 = Graphics.FromImage(doska_bitmap);
             e1.DrawImage(doska_image, 0, 0);
@@ -86,18 +88,21 @@ namespace Chess
                     if (click == false)
                     {
                         Graphics e1 = Graphics.FromImage(doska_bitmap);
+                        otrisovka otrsvka = new otrisovka();
                         picturebox_click_check class_picturebox = new picturebox_click_check();
                         player1_xod_cs xod = new player1_xod_cs();
                         int x = Convert.ToInt32(e.X);
                         int y = Convert.ToInt32(e.Y);
-                        click = true;
                         int[] figura = class_picturebox.rachet(doska, x, y); //юзая класс определяем клетку нажатия и фигуру
                         if (figura[2] == 0) { } //nothing
-                        else if (figura[3] == 0){}
+                        else if (figura[3] == 0) { }
                         else
                         {
                             xodi = xod.firts_etap(doska, figura);
-                            e1.FillRectangle(new SolidBrush(Color.FromArgb(155, Color.Yellow)), cletochki[figura[0], figura[1], 0].X, cletochki[figura[0], figura[1], 0].Y, Convert.ToSingle(Math.Sqrt(Math.Pow((cletochki[figura[0], figura[1], 0].X - cletochki[figura[0], figura[1], 1].X), 2) + Math.Pow((cletochki[figura[0], figura[1], 0].Y - cletochki[figura[0], figura[1], 1].Y), 2)) / Math.Sqrt(2))+1, Convert.ToSingle(Math.Sqrt(Math.Pow((cletochki[figura[0], figura[1], 0].X - cletochki[figura[0], figura[1], 1].X), 2) + Math.Pow((cletochki[figura[0], figura[1], 0].Y - cletochki[figura[0], figura[1], 1].Y), 2)) / Math.Sqrt(2))+1);
+                            otrsvka.otrisoBka(doska_bitmap, doska, cletochki);
+                            pictureBox1.Image = doska_bitmap;
+                            pictureBox1.Refresh();
+                            e1.FillRectangle(new SolidBrush(Color.FromArgb(155, Color.Yellow)), cletochki[figura[0], figura[1], 0].X, cletochki[figura[0], figura[1], 0].Y, Convert.ToSingle(Math.Sqrt(Math.Pow((cletochki[figura[0], figura[1], 0].X - cletochki[figura[0], figura[1], 1].X), 2) + Math.Pow((cletochki[figura[0], figura[1], 0].Y - cletochki[figura[0], figura[1], 1].Y), 2)) / Math.Sqrt(2)) + 1, Convert.ToSingle(Math.Sqrt(Math.Pow((cletochki[figura[0], figura[1], 0].X - cletochki[figura[0], figura[1], 1].X), 2) + Math.Pow((cletochki[figura[0], figura[1], 0].Y - cletochki[figura[0], figura[1], 1].Y), 2)) / Math.Sqrt(2)) + 1);
                             for (int i = 0; i < 26; i++)
                             {
                                 for (int x1 = 0; x1 < 8; x1++)
@@ -106,38 +111,126 @@ namespace Chess
                                     {
                                         if (xodi[i, x1, y1] == 1)
                                         {
-                                            e1.FillRectangle(new SolidBrush(Color.FromArgb(155, Color.Green)), cletochki[x1, y1, 0].X, cletochki[x1, y1, 0].Y, Convert.ToSingle(Math.Sqrt(Math.Pow((cletochki[x1, y1, 0].X - cletochki[x1, y1, 1].X), 2) + Math.Pow((cletochki[x1, y1, 0].Y - cletochki[x1, y1, 1].Y), 2))/Math.Sqrt(2))+1, Convert.ToSingle(Math.Sqrt(Math.Pow((cletochki[x1, y1, 0].X - cletochki[x1, y1, 1].X), 2) + Math.Pow((cletochki[x1, y1, 0].Y - cletochki[x1, y1, 1].Y), 2))/Math.Sqrt(2))+1);
+                                            click = true;
+                                            e1.FillRectangle(new SolidBrush(Color.FromArgb(155, Color.Green)), cletochki[x1, y1, 0].X, cletochki[x1, y1, 0].Y, Convert.ToSingle(Math.Sqrt(Math.Pow((cletochki[x1, y1, 0].X - cletochki[x1, y1, 1].X), 2) + Math.Pow((cletochki[x1, y1, 0].Y - cletochki[x1, y1, 1].Y), 2)) / Math.Sqrt(2)) + 1, Convert.ToSingle(Math.Sqrt(Math.Pow((cletochki[x1, y1, 0].X - cletochki[x1, y1, 1].X), 2) + Math.Pow((cletochki[x1, y1, 0].Y - cletochki[x1, y1, 1].Y), 2)) / Math.Sqrt(2)) + 1);
                                         }
                                     }
                                 }
                             }
                         }
+                        vibrannaya_figura = figura;
                         pictureBox1.Image = doska_bitmap;
                         pictureBox1.Refresh();
                     }
                     else
                     {
                         Graphics e1 = Graphics.FromImage(doska_bitmap);
+                        otrisovka otrsvka = new otrisovka();
                         picturebox_click_check class_picturebox = new picturebox_click_check();
-                        player1_xod_cs xod = new player1_xod_cs();
                         int x = Convert.ToInt32(e.X);
                         int y = Convert.ToInt32(e.Y);
                         int[] figura = class_picturebox.rachet(doska, x, y);
-                        for (int i = 0; i < 26; i++)
+                        click = false;
+                        for (int x1 = 0; x1 < 8; x1++)
                         {
-
+                            for (int y1 = 0; y1 < 8; y1++)
+                            {
+                                if (figura[0] == x1 && figura[1] == y1)
+                                {
+                                    for (int i = 0; i < 26; i++)
+                                    {
+                                        if (xodi[i, x1, y1] == 1)
+                                        {
+                                            player1_xod = false;
+                                            doska[vibrannaya_figura[0], vibrannaya_figura[1], vibrannaya_figura[2], vibrannaya_figura[3]] = 0;
+                                            doska[vibrannaya_figura[0], vibrannaya_figura[1], 0, 0] = 1;
+                                            doska[x1, y1, 0, 0] = 0;
+                                            doska[x1, y1, vibrannaya_figura[2], vibrannaya_figura[3]] = 1;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
                         }
+
+                        otrsvka.otrisoBka(doska_bitmap, doska, cletochki);
+                        pictureBox1.Image = doska_bitmap;
+                        pictureBox1.Refresh();
                     }
                 }
                 else //player2_xod_cs юзаем
                 {
-                    if(click == false)
+                    if (click == false)
                     {
-                        click = true;
+                        Graphics e1 = Graphics.FromImage(doska_bitmap);
+                        otrisovka otrsvka = new otrisovka();
+                        picturebox_click_check class_picturebox = new picturebox_click_check();
+                        player2_xod_cs xod = new player2_xod_cs();
+                        int x = Convert.ToInt32(e.X);
+                        int y = Convert.ToInt32(e.Y);
+                        int[] figura = class_picturebox.rachet(doska, x, y); //юзая класс определяем клетку нажатия и фигуру
+                        if (figura[2] == 0) { } //nothing
+                        else if (figura[3] == 1) { }
+                        else
+                        {
+                            xodi = xod.firts_etap(doska, figura);
+                            otrsvka.otrisoBka(doska_bitmap, doska, cletochki);
+                            pictureBox1.Image = doska_bitmap;
+                            pictureBox1.Refresh();
+                            e1.FillRectangle(new SolidBrush(Color.FromArgb(155, Color.Yellow)), cletochki[figura[0], figura[1], 0].X, cletochki[figura[0], figura[1], 0].Y, Convert.ToSingle(Math.Sqrt(Math.Pow((cletochki[figura[0], figura[1], 0].X - cletochki[figura[0], figura[1], 1].X), 2) + Math.Pow((cletochki[figura[0], figura[1], 0].Y - cletochki[figura[0], figura[1], 1].Y), 2)) / Math.Sqrt(2)) + 1, Convert.ToSingle(Math.Sqrt(Math.Pow((cletochki[figura[0], figura[1], 0].X - cletochki[figura[0], figura[1], 1].X), 2) + Math.Pow((cletochki[figura[0], figura[1], 0].Y - cletochki[figura[0], figura[1], 1].Y), 2)) / Math.Sqrt(2)) + 1);
+                            for (int i = 0; i < 26; i++)
+                            {
+                                for (int x1 = 0; x1 < 8; x1++)
+                                {
+                                    for (int y1 = 0; y1 < 8; y1++)
+                                    {
+                                        if (xodi[i, x1, y1] == 1)
+                                        {
+                                            click = true;
+                                            e1.FillRectangle(new SolidBrush(Color.FromArgb(155, Color.Green)), cletochki[x1, y1, 0].X, cletochki[x1, y1, 0].Y, Convert.ToSingle(Math.Sqrt(Math.Pow((cletochki[x1, y1, 0].X - cletochki[x1, y1, 1].X), 2) + Math.Pow((cletochki[x1, y1, 0].Y - cletochki[x1, y1, 1].Y), 2)) / Math.Sqrt(2)) + 1, Convert.ToSingle(Math.Sqrt(Math.Pow((cletochki[x1, y1, 0].X - cletochki[x1, y1, 1].X), 2) + Math.Pow((cletochki[x1, y1, 0].Y - cletochki[x1, y1, 1].Y), 2)) / Math.Sqrt(2)) + 1);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        vibrannaya_figura = figura;
+                        pictureBox1.Image = doska_bitmap;
+                        pictureBox1.Refresh();
                     }
                     else
                     {
+                        Graphics e1 = Graphics.FromImage(doska_bitmap);
+                        otrisovka otrsvka = new otrisovka();
+                        picturebox_click_check class_picturebox = new picturebox_click_check();
+                        int x = Convert.ToInt32(e.X);
+                        int y = Convert.ToInt32(e.Y);
+                        int[] figura = class_picturebox.rachet(doska, x, y);
+                        click = false;
+                        for (int x1 = 0; x1 < 8; x1++)
+                        {
+                            for (int y1 = 0; y1 < 8; y1++)
+                            {
+                                if (figura[0] == x1 && figura[1] == y1)
+                                {
+                                    for (int i = 0; i < 26; i++)
+                                    {
+                                        if (xodi[i, x1, y1] == 1)
+                                        {
+                                            player1_xod = true;
+                                            doska[vibrannaya_figura[0], vibrannaya_figura[1], vibrannaya_figura[2], vibrannaya_figura[3]] = 0;
+                                            doska[vibrannaya_figura[0], vibrannaya_figura[1], 0, 0] = 1;
+                                            doska[x1, y1, 0, 0] = 0;
+                                            doska[x1, y1, vibrannaya_figura[2], vibrannaya_figura[3]] = 1;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
 
+                        otrsvka.otrisoBka(doska_bitmap, doska, cletochki);
+                        pictureBox1.Image = doska_bitmap;
+                        pictureBox1.Refresh();
                     }
                 }
             }
