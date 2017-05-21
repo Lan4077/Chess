@@ -15,11 +15,11 @@ namespace Chess
             {
                 if (figura[3] == 1)
                 {
-                    if(figura[1] == 6)
+                    if (figura[1] == 6)
                     {
-                        if(doska[figura[0], (figura[1]-1), 0, 0] == 1)
+                        if (doska[figura[0], (figura[1] - 1), 0, 0] == 1)
                         {
-                            if(doska[figura[0], (figura[1]-2), 0, 0] == 1)
+                            if (doska[figura[0], (figura[1] - 2), 0, 0] == 1)
                             {
                                 xodi[0, figura[0], figura[1] - 1] = 1;
                                 xodi[1, figura[0], figura[1] - 2] = 1;
@@ -38,62 +38,62 @@ namespace Chess
                         }
                     }
                 }
-                else{} //Nothing
+                else { } //Nothing
             }
-            else if(figura[2] == 2) //Конь
+            else if (figura[2] == 2) //Конь
             {
                 if (figura[3] == 1)
                 {
-                    if(figura[0] - 1 >= 0 && figura[1] - 2 >= 0)
+                    if (figura[0] - 1 >= 0 && figura[1] - 2 >= 0)
                     {
-                        if(doska[figura[0] - 1, figura[1] - 2, 0, 0] == 1)
+                        if (doska[figura[0] - 1, figura[1] - 2, 0, 0] == 1)
                         {
                             xodi[0, figura[0] - 1, figura[1] - 2] = 1;
                         }
                     }
-                    if(figura[0] + 1 <= 7 && figura[1] - 2 >= 0)
+                    if (figura[0] + 1 <= 7 && figura[1] - 2 >= 0)
                     {
                         if (doska[figura[0] + 1, figura[1] - 2, 0, 0] == 1)
                         {
                             xodi[1, figura[0] + 1, figura[1] - 2] = 1;
                         }
                     }
-                    if(figura[0] + 2 <= 7 && figura[1] - 1 >= 0)
+                    if (figura[0] + 2 <= 7 && figura[1] - 1 >= 0)
                     {
                         if (doska[figura[0] + 2, figura[1] - 1, 0, 0] == 1)
                         {
                             xodi[2, figura[0] + 2, figura[1] - 1] = 1;
                         }
                     }
-                    if(figura[0] + 2 <= 7 && figura[1] + 1 <= 7)
+                    if (figura[0] + 2 <= 7 && figura[1] + 1 <= 7)
                     {
                         if (doska[figura[0] + 2, figura[1] + 1, 0, 0] == 1)
                         {
                             xodi[3, figura[0] + 2, figura[1] + 1] = 1;
                         }
                     }
-                    if(figura[0] + 1 <= 7 && figura[1] + 2 <= 7)
+                    if (figura[0] + 1 <= 7 && figura[1] + 2 <= 7)
                     {
                         if (doska[figura[0] + 1, figura[1] + 2, 0, 0] == 1)
                         {
                             xodi[4, figura[0] + 1, figura[1] + 2] = 1;
                         }
                     }
-                    if(figura[0] - 1 >= 0 && figura[1] + 2 <= 7)
+                    if (figura[0] - 1 >= 0 && figura[1] + 2 <= 7)
                     {
                         if (doska[figura[0] - 1, figura[1] + 2, 0, 0] == 1)
                         {
                             xodi[5, figura[0] - 1, figura[1] + 2] = 1;
                         }
                     }
-                    if(figura[0] - 2 >= 0 && figura[1] + 1 <= 7)
+                    if (figura[0] - 2 >= 0 && figura[1] + 1 <= 7)
                     {
                         if (doska[figura[0] - 2, figura[1] + 1, 0, 0] == 1)
                         {
                             xodi[6, figura[0] - 2, figura[1] + 1] = 1;
                         }
                     }
-                    if(figura[0] - 2 >= 0 && figura[1] - 1 >= 0)
+                    if (figura[0] - 2 >= 0 && figura[1] - 1 >= 0)
                     {
                         if (doska[figura[0] - 2, figura[1] - 1, 0, 0] == 1)
                         {
@@ -102,6 +102,73 @@ namespace Chess
                     }
                 }
                 else { } // nothing
+            }
+            else if (figura[2] == 3) //Слон
+            {
+                if (figura[3] == 1)
+                {
+                    int i = 0; int x1 = figura[0]; int y1 = figura[1];
+                    while (x1 < 8 && y1 < 8)
+                    {
+                        if (doska[x1, y1, 0, 0] == 1)
+                        {
+                            xodi[i, x1, y1] = 1;
+                            i++;
+                        }
+                        else if (x1 == figura[0] && y1 == figura[1]) { } // nothing
+                        else
+                        {
+                            break;
+                        }
+                        x1++; y1++;
+                    }
+                    x1 = figura[0]; y1 = figura[1];
+                    while (x1 < 8 && y1 >= 0)
+                    {
+                        if (doska[x1, y1, 0, 0] == 1)
+                        {
+                            xodi[i, x1, y1] = 1;
+                            i++;
+                        }
+                        else if (x1 == figura[0] && y1 == figura[1]) { } // nothing
+                        else
+                        {
+                            break;
+                        }
+                        x1++; y1--;
+                    }
+                    x1 = figura[0]; y1 = figura[1];
+                    while (x1 >= 0 && y1 >= 0)
+                    {
+                        if (doska[x1, y1, 0, 0] == 1)
+                        {
+                            xodi[i, x1, y1] = 1;
+                            i++;
+                        }
+                        else if (x1 == figura[0] && y1 == figura[1]) { } // nothing
+                        else
+                        {
+                            break;
+                        }
+                        x1--; y1--;
+                    }
+                    x1 = figura[0]; y1 = figura[1];
+                    while (x1 >= 0 && y1 < 8)
+                    {
+                        if (doska[x1, y1, 0, 0] == 1)
+                        {
+                            xodi[i, x1, y1] = 1;
+                            i++;
+                        }
+                        else if (x1 == figura[0] && y1 == figura[1]) { } // nothing
+                        else
+                        {
+                            break;
+                        }
+                        x1--; y1++;
+                    }
+                }
+                else { } // nothing 
             }
             return xodi;
         }
