@@ -34,6 +34,17 @@ namespace Chess
             doska[5, 7, 3, 1] = 1;
             doska[3, 0, 5, 0] = 1; //Когъолева
             doska[3, 7, 5, 1] = 1;
+            for(int x = 0; x < 8; x++)
+            {
+                for (int y = 0; y < 8; y++)
+                {
+                    if(doska[x,y,1,0] == 0 && doska[x,y,1,1] == 0 && doska[x, y, 2, 0] == 0 && doska[x, y, 2, 1] == 0 && doska[x, y, 3, 0] == 0 && doska[x, y, 3, 1] == 0 && doska[x, y, 4, 0] == 0 && doska[x, y, 4, 1] == 0 && doska[x, y, 5, 0] == 0 && doska[x, y, 5, 1] == 0 && doska[x, y, 6, 0] == 0 && doska[x, y, 6, 1] == 0)
+                    {
+                        doska[x, y, 0, 0] = 1;
+                    }
+                }
+                
+            }
             return doska;
         }
         public int[,,,] arrangement_zero(int[,,,] doska)

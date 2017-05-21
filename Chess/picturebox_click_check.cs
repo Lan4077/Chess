@@ -154,7 +154,7 @@ namespace Chess
                 //Дальше определяем фигуру
                 for (int i = 0; i < 7; i++)
                 {
-                    for (int a = 0; a < 1; a++)
+                    for (int a = 0; a < 2; a++)
                     {
                         if (doska[figura[0], figura[1], i, a] == 1)
                         {
@@ -164,7 +164,6 @@ namespace Chess
                         }
                     }
                 }
-                MessageBox.Show(Convert.ToString(figura[0]) + " " + Convert.ToString(figura[1]));
             }
             return figura;
         }
