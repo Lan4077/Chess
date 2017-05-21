@@ -67,6 +67,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="king.cs" />
     <Compile Include="otrisovka.cs" />
     <Compile Include="picturebox_click_check.cs" />
     <Compile Include="player1_xod_cs.cs" />

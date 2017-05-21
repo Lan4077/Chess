@@ -394,56 +394,58 @@ namespace Chess
             {
                 if (figura[3] == 0)
                 {
+                    king under_attack = new king();
+                    int[,] is_being_attacked = under_attack.cltchki_under_attack(doska, 0);
                     if (figura[1] - 1 != -1)
                     {
-                        if (doska[figura[0], figura[1] - 1, 0, 0] == 1)
+                        if (doska[figura[0], figura[1] - 1, 0, 0] == 1 && is_being_attacked[figura[0], figura[1] - 1] == 0)
                         {
                             xodi[0, figura[0], figura[1] - 1] = 1;
                         }
                     }
-                    if (figura[1] + 1 != 8)
+                    if (figura[1] + 1 != 8 && is_being_attacked[figura[0], figura[1] + 1] == 0)
                     {
                         if (doska[figura[0], figura[1] + 1, 0, 0] == 1)
                         {
                             xodi[1, figura[0], figura[1] + 1] = 1;
                         }
                     }
-                    if (figura[0] - 1 != -1)
+                    if (figura[0] - 1 != -1 && is_being_attacked[figura[0] - 1, figura[1]] == 0)
                     {
                         if (doska[figura[0] - 1, figura[1], 0, 0] == 1)
                         {
                             xodi[2, figura[0] - 1, figura[1]] = 1;
                         }
                     }
-                    if (figura[0] + 1 != 8)
+                    if (figura[0] + 1 != 8 && is_being_attacked[figura[0] + 1, figura[1]] == 0)
                     {
                         if (doska[figura[0] + 1, figura[1], 0, 0] == 1)
                         {
                             xodi[3, figura[0] + 1, figura[1]] = 1;
                         }
                     }
-                    if (figura[1] - 1 != -1 && figura[0] - 1 != -1)
+                    if (figura[1] - 1 != -1 && figura[0] - 1 != -1 && is_being_attacked[figura[0] - 1, figura[1] - 1] == 0)
                     {
                         if (doska[figura[0] - 1, figura[1] - 1, 0, 0] == 1)
                         {
                             xodi[4, figura[0] - 1, figura[1] - 1] = 1;
                         }
                     }
-                    if (figura[1] + 1 != 8 && figura[0] - 1 != -1)
+                    if (figura[1] + 1 != 8 && figura[0] - 1 != -1 && is_being_attacked[figura[0] - 1, figura[1] + 1] == 0)
                     {
                         if (doska[figura[0] - 1, figura[1] + 1, 0, 0] == 1)
                         {
                             xodi[5, figura[0] - 1, figura[1] + 1] = 1;
                         }
                     }
-                    if (figura[1] + 1 != 8 && figura[0] + 1 != 8)
+                    if (figura[1] + 1 != 8 && figura[0] + 1 != 8 && is_being_attacked[figura[0] + 1, figura[1] + 1] == 0)
                     {
                         if (doska[figura[0] + 1, figura[1] + 1, 0, 0] == 1)
                         {
                             xodi[6, figura[0] + 1, figura[1] + 1] = 1;
                         }
                     }
-                    if (figura[0] + 1 != 8 && figura[1] - 1 != -1)
+                    if (figura[0] + 1 != 8 && figura[1] - 1 != -1 && is_being_attacked[figura[0] + 1, figura[1] - 1] == 0)
                     {
                         if (doska[figura[0] + 1, figura[1] - 1, 0, 0] == 1)
                         {
